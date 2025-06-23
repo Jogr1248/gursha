@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            background-color: #f1f1f1;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        .active {
+            background-color: #008CBA;
+        }
+
+        .content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .content.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function toggleContent() {
+            var content = document.querySelector('.content');
+            content.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Page</h1>
+        <p>Welcome to this admin page</p>
+    </div>
+
+    <ul>
+        <li><a href="delivery_partinerregisteration.html">Manage Partners</a></li>
+        <li><a href="addhotel12.html">Add restourants</a></li>
+        <li><a href="usera_data_read.php">User Stories</a></li>
+        <li><a onclick="toggleContent()">Manage Database</a></li>
+        <li><a href="gursha.html">Home Page</a></li>
+        <li><a href="resttourants.html">Restaurants Page</a></li>
+    </ul>
+
+    <div class="content">
+        <h2>Manage Database</h2>
+        <ul>
+            <li><a href="admin_read_comment.php"> read users coments</a></li>
+			<li><a href="hotels_coment.php"> read hotels comment</a></li>
+            <li><a href="delete_table.php">Delete table</a></li>
+            <li><a href="delete_order.php">cancil order</a></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Your Company. All rights reserved.
+    </div>
+</body>
+</html>

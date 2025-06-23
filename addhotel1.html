@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Form</title>
+</head>
+<body>
+  <form method="post" action="submit1.php" enctype="multipart/form-data">
+    <div id="food-items">
+      <div class="food-item">
+        <input type="text" name="food_data[0][food_name]" placeholder="Food Name" required>
+        <input type="number" name="food_data[0][food_price]" placeholder="Food Price" required>
+        <textarea name="food_data[0][food_description]" placeholder="Food Description" required></textarea>
+        <input type="text" name="food_data[0][food_category]" placeholder="Food Category" required>
+        <input type="text" name="food_data[0][hotel_name]" placeholder="Hotel Name" required>
+        <input type="file" name="food_image[]" accept="image/*">
+      </div>
+    </div>
+    <button type="button" id="add-food-item">Add Food Item</button>
+    <button type="submit" name="add">Submit</button>
+  </form>
+
+  <script>
+    // Add event listeners for form submission and adding food items
+    document.forms[0].addEventListener('submit', validateForm);
+    document.getElementById('add-food-item').addEventListener('click', addFoodItem);
+
+    // Define the validation rules for each input type
+    const validationRules = {
+      'food_name': {
+        type: 'text',
+        required: true,
+        minLength: 3,
+      },
+      'food_price': {
+        type: 'number',
+        required: true,
+        min: 0,
+      },
+      'food_description': {
+        type: 'textarea',
+        required: true,
+        minLength: 10,
+      },
+      'food_category': {
+        type: 'text',
+        required: true,
+        minLength: 3,
+      },
+      'hotel_name': {
+        type: 'text',
+        required: true,
+        minLength: 3,
+      },
+      'food_image': {
+        type: 'file',
+        required: true,
+        accept: 'image/*',
+      },
+    };
+
+    // Validate the form input before submitting
+    function validateForm(event) {
+      const inputs = event.target.querySelectorAll('input, textarea');
+      const valid = inputs.every(input => {
+        const name = input.getAttribute('name');
+        const value = input.value.trim();
+        const rule = validationRules[name];
+        if (rule.required && !value) {
+          alert(`${name} is required`);
+          return false;
+        }
+        switch (rule.type) {
+
+case 'text':
+if (value.length < rule.minLength) {
+alert(${name} must be at least ${rule.minLength} characters);
+return false;
+}
+break;
+case 'number':
+if (value < rule.min) {
+alert(${name} must be at least ${rule.min});
+return false;
+}
+break;
+case 'textarea':
+if (value.length < rule.minLength) {
+alert(${name} must be at least ${rule.minLength} characters);
+return false;
+}
+break;
+case 'file':
+const file = input.files[0];
+if (!file || file.type !== rule.accept) {
+alert(${name} must be an image file);
+return false;
+}
+break;
+default:
+break;
+}
+return true;
+});
+if (!valid) {
+event.preventDefault();
+}
+}
+// Add a new set of input fields for a food item
+function addFoodItem() {
+const foodItem = document.querySelector('.food-item');
+const clone = foodItem.cloneNode(true);
+const inputs = clone.querySelectorAll('input, textarea');
+inputs.forEach(input => {
+const name = input.getAttribute('name');
+input.setAttribute('name', name.replace(/\[0\]/, [${foodItem.cloneIndex}]));
+});
+foodItem.parentNode.appendChild(clone);
+}
+</script>
+</body>
+</html>

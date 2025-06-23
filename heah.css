@@ -1,0 +1,81 @@
+
+#divs{
+background-color: rgb(15, 8, 2);
+position: fixed;
+top:0px;
+left:0px;
+right: 0px;
+color:white;
+}
+.div {
+    display: inline-block;
+    border-spacing: 8px;
+    padding: 10px;
+    margin-left: 200px;
+  
+}
+#div1{
+    position: relative;
+    top:30px;
+    background-image: url('head.jpeg');
+}
+.div:hover {
+    background-color: rgb(66, 94, 38);
+}
+
+.div:active {
+    background-color: blueviolet;
+}
+
+.div:visited {
+    background-color: darkgray;
+}
+
+#div1 {
+  
+   
+    
+    
+    width:100%;
+    color: rgb(2, 14, 24);
+    text-align: center;
+    padding-top: 6px;
+}
+.description ,.we{
+    display: inline;
+    padding: 15px;
+    border-spacing: 8px;
+}
+
+.restorants {
+    display: inline-block;
+    border-spacing: 8px;
+    background-color:honeydew;
+    padding: 10px;
+    margin:  0px 15px;
+}
+.fa{
+  display: inline-flex; 
+  margin: 0px 30px; 
+  padding: 2px 20px;
+}
+.fa-car{
+    text-align: left;
+}
+a {
+    text-decoration: none;
+    color:firebrick;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: rgb(66, 94, 38);
+}
+
+a:active {
+    color: blueviolet;
+}
+
+a:visited {
+    color: darkgray;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .food-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .food-item img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ccc;
+    }
+
+    .upload-btn {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .upload-btn input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    button[type="button"],
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="button"]:hover,
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" action="submit1.php" enctype="multipart/form-data">
+    <div id="food-items">
+      <div class="food-item">
+        <input type="text" name="food_data[0][food_name]" placeholder="Food Name" required>
+        <input type="number" name="food_data[0][food_price]" placeholder="Food Price" required>
+        <textarea name="food_data[0][food_description]" placeholder="Food Description" required></textarea>
+        <input type="text" name="food_data[0][food_category]" placeholder="Food Category" required>
+        <input type="text" name="food_data[0][hotel_name]" placeholder="Hotel Name" required>
+        <label class="upload-btn">
+          Upload Image
+          <input type="file" name="food_image[]" accept="image/*">
+        </label>
+      </div>
+    </div>
+    <button type="button" id="add-food-item">Add Food Item</button>
+    <button type="submit" name="add">Submit</button>
+  </form>
+
+  <script>
+    // Add event listeners for form submission and adding food items
+    document.forms[0].addEventListener('submit', validateForm);
+    document.getElementById('add-food-item').addEventListener('click', addFoodItem);
+
+    // Define the validation rules for each input type
+    const validationRules = {
+      'food_name': {
+        type: 'text',
+        required: true,
+        minLength: 3,
+      },
+      'food_price': {
+        type: 'number',
+        required: true,
+        min: 0,
+      },
+      'food_description': {
+        type: 'textarea',
+        required: true,
+        minLength: 10,
+      },
+      'food_category': {
+        type: 'text',
+        required: true,
+        minLength: 3,
+      },
+      'hotel_name': {
+        type: 'text',
+        required: true,
+        minLength: 3,
+      },
+      'food_image': {
+        type: 'file',
+        required: true,
+        accept: 'image/*',
+      },
+    };
+
+    // Validate the form input before submitting
+    function validateForm(event) {
+      const inputs = event.target.querySelectorAll('input, textarea');
+      const valid = inputs.every(input => {
+        const name = input.getAttribute('name');
+        const value = input.value.trim();
+        const rule = validationRules[name];
+        if (rule.required && !value) {
+          alert(`${name} is required`);
+          return false;
+        }
+        switch (rule.type) {
+
+case 'text':
+if (value.length < rule.minLength) {
+alert(${name} must be at least ${rule.minLength} characters);
+return false;
+}
+break;
+case 'number':
+if (value < rule.min) {
+alert(${name} must be at least ${rule.min});
+return false;
+}
+break;
+case 'textarea':
+if (value.length < rule.minLength) {
+alert(${name} must be at least ${rule.minLength} characters);
+return false;
+}
+break;
+case 'file':
+const file = input.files[0];
+if (!file || file.type !== rule.accept) {
+alert(${name} must be an image file);
+return false;
+}
+break;
+default:
+break;
+}
+return true;
+});
+if (!valid) {
+event.preventDefault();
+}
+}
+// Add a new set of input fields for a food item
+function addFoodItem() {
+const foodItem = document.querySelector('.food-item');
+const clone = foodItem.cloneNode(true);
+const inputs = clone.querySelectorAll('input, textarea');
+inputs.forEach(input => {
+const name = input.getAttribute('name');
+input.setAttribute('name', name.replace(/\[0\]/, [${foodItem.cloneIndex}]));
+});
+foodItem.parentNode.appendChild(clone);
+}
+</script>
+</body>
+</html>

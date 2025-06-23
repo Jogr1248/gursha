@@ -1,0 +1,30 @@
+#div2 {
+    margin-left: 70px;
+    margin-right: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .image_style {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .image_size {
+    width: 350px; /* Set a larger width */
+    height: 250px; /* Set a larger height */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+  
+  figcaption {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  pre {
+    white-space: pre-wrap;
+  }
+  
+  

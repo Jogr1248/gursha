@@ -1,0 +1,109 @@
+#how_it_works {
+    background-color: rgb(161, 134, 123);
+    position: relative;
+    top: auto;
+    bottom: 0px;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .description {
+    padding: 0px 20px;
+    display: inline-block;
+  }
+
+  pre {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  h4 {
+    text-align: center;
+  }
+  
+  #price {
+    background-color: rgb(199, 201, 183);
+    color: rgb(253, 253, 253);
+    margin: 0px;
+    position: relative;
+    bottom: 10px;
+    top: 13px;
+  }
+}
+#ordering{
+     
+     display:inline-block;
+} 
+  #footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  .footer {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    vertical-align: top;
+  }
+  
+  .footer h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .footer pre {
+    white-space: pre-wrap;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  
+  .footer button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .footer button:hover {
+    background-color: #45a049;
+  }
+  
+  .fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  
+  .fa:hover {
+    opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  p {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  margin-top: 20px;
+}

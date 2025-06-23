@@ -1,0 +1,48 @@
+ <div id="ordering" style ="font-size:25px; font-family:Arial, Helvetica, sans-serif;">
+           <pre>
+                        
+            <i class="fa fa-bicycle" aria-hidden="true"></i><br>
+                  0-2Km              50birr
+                  2-4Km              80birr
+                  4-6KM              100BIRR
+                  > 6km              N/A
+          </pre> 
+          </div>
+          <div id="ordering">
+            <pre>
+            <div id="selectContainer" class="dropdown">
+                <button id="dropdownButton" class="dropdown-button">Select an option</button>
+                <div id="dropdownOptions" class="dropdown-options">
+                  <div class="dropdown-option" data-value="option1">Option 1</div>
+                  <div class="dropdown-option" data-value="option2">Option 2</div>
+                  <div class="dropdown-option" data-value="option3">Option 3</div>
+                  <script>
+                    var dropdownContainer = document.getElementById('selectContainer');
+var dropdownButton = document.getElementById('dropdownButton');
+var dropdownOptions = document.getElementById('dropdownOptions').children;
+
+dropdownButton.addEventListener('click', function() {
+  if (dropdownOptions[0].style.display === 'none') {
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      dropdownOptions[i].style.display = 'block';
+    }
+  } else {
+    for (var i = 0; i < dropdownOptions.length; i++) {
+      dropdownOptions[i].style.display = 'none';
+    }
+  }
+});
+
+for (var i = 0; i < dropdownOptions.length; i++) {
+  dropdownOptions[i].addEventListener('click', function() {
+    dropdownButton.textContent = this.textContent;
+    for (var j = 0; j < dropdownOptions.length; j++) {
+      dropdownOptions[j].style.display = 'none';
+    }
+  });
+}
+                  </script>
+                </div>
+            </pre>
+              </div>
+          </div>

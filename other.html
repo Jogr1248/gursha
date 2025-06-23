@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+<style>
+    .product-card img {
+        border: 1px solid #000;
+    }
+</style>
+    .product-card {
+        width: 200px;
+        margin: 10px;
+        text-align: center;
+    }
+</style>
+    <title>Product Catalog</title>
+</head>
+<body>
+    <header>
+        <h1>Product Catalog</h1>
+    </header>
+   <div class="product-container">
+        
+        <div class="product-card">
+            
+            <img src="Jamesson-Black-Barrel.jpeg" alt="Product 1">
+            <h3>Product 3</h3>
+                <p class="price">$29.99</p>
+                <p class="description">Product 3 description goes here.</p>
+                <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="johnnie-walker-gold-label-reserve.jpeg" alt="Product 2">
+            <h3>Product 3</h3>
+            <p class="price">$29.99</p>
+            <p class="description">Product 3 description goes here.</p>
+            <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="Hendrick's-Gin.jpeg" alt="Product 3">
+            <h3>Product 3</h3>
+            <p class="price">$29.99</p>
+            <p class="description">Product 3 description goes here.</p>
+            <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+        </div>
+   
+          <div class="product-card">
+              <img src="monkey-shoulder.jpeg" alt="Product 1">
+              <h3>Product 3</h3>
+              <p class="price">$29.99</p>
+              <p class="description">Product 3 description goes here.</p>
+              <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+          </div>
+          <div class="product-card">
+              <img src="Glenfiddich-15-years.jpeg" alt="Product 2">
+              <h3>Product 3</h3>
+              <p class="price">$29.99</p>
+              <p class="description">Product 3 description goes here.</p>
+              <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+          </div>
+          <div class="product-card">
+              <img src="Grant’s-Triple-Wood.jpeg" alt="Product 3">
+              <h3>Product 3</h3>
+              <p class="price">$29.99</p>
+              <p class="description">Product 3 description goes here.</p>
+              <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+          </div>
+          
+            <div class="product-card">
+                <img src="Tanqueray-London-Dry-Gin.jpeg" alt="Product 1">
+                <h3>Product 3</h3>
+                <p class="price">$29.99</p>
+                <p class="description">Product 3 description goes here.</p>
+                <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Winter-Palace-.jpeg" alt="Product 2">
+                <h3>Product 3</h3>
+                <p class="price">$29.99</p>
+                <p class="description">Product 3 description goes here.</p>
+                <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Castello-Del-Pogglo-Prosecco.jpeg" alt="Product 3">
+                <h3>Product 3</h3>
+               <p class="price">$29.99</p>
+                <p class="description">Product 3 description goes here.</p>
+                <button class="button" data-product="Product 3" data-price="29.99">Add to Cart</button>
+            </div>
+        </div>
+
+    <div id="total-price">Total Price: 0 Birr</div>
+
+    <!-- Order form -->
+    <form id="order-form" method="POST" action="other.php">
+               <form id="order-form" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="hotel">Hotel:</label>
+        <select id="hotel" name="hotel" required>
+            <option value="hotel1">Hotel 1</option>
+            <option value="hotel2">Hotel 2</option>
+            <option value="hotel3">Hotel 3</option>
+            <!-- Add more options for other hotels if needed -->
+        </select><br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="food_items">Food Items:</label>
+        <input type="text" id="food_items" name="food_items" value="drinks" required><br><br>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Calculate the total price and update the total-price div
+        function calculateTotalPrice() {
+            var totalPrice = 0;
+
+            // Loop through each product-card element
+            $(".product-card").each(function() {
+                // Check if the Add to Cart button of the product is clicked
+                if ($(this).data("clicked")) {
+                    var price = parseFloat($(this).find(".price").text().substring(1));
+                    totalPrice += price;
+                }
+            });
+
+            // Update the total-price div
+            $("#total-price").text("Total Price: " + totalPrice + " Birr");
+        }
+
+        // Handle the click event on the Add to Cart button
+        $(".product-container").on("click", ".product-card .button", function() {
+            var productName = $(this).data("product");
+            var productPrice = $(this).data("price");
+
+            $(this).closest(".product-card").data("clicked", true);
+            $("#order-item-name").val(productName);
+            $("#order-item-price").val(productPrice);
+            calculateTotalPrice();
+        });
+
+        // Handle the form submission
+        $("#order-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the form data
+            var formData = $(this).serialize();
+
+            // Send the order details to the server using AJAX
+            $.ajax({
+                url: "process_order.php", // Replace with the URL of your server-side script to process the order
+                method: "POST",
+                data: formData,
+                success: function(response) {
+                    alert("Order placed successfully!"); // Display a success message
+                    $("#order-form")[0].reset(); // Reset the form
+                    $(".product-card").data("clicked", false); // Reset the clicked state of product cards
+                    calculateTotalPrice(); // Reset the total price
+                },
+                error: function() {
+                    alert("Error placing the order. Please try again later."); // Display an error message
+                }
+            });
+        });
+    </script>
+</body>
+</html>

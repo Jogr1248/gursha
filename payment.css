@@ -1,0 +1,22 @@
+#price {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#ordering {
+  flex: 1;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#ordering h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#ordering pre {
+  white-space: pre-wrap;
+  line-height: 1.5;
+  font-size: 16px;
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tinsae Restaurant</title>
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style> /* Add the following CSS code to your existing style.css file */
+
+#menu-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.food-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.food-item img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.food-item h3 {
+  margin-top: 10px;
+}
+
+.food-item p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.add-to-cart {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+/* Add the following CSS code to your existing style.css file */
+
+body {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+#cart-section {
+  margin-top: 20px;
+}
+
+.selected-item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.selected-item-name {
+  font-weight: bold;
+}
+
+.selected-item-price {
+  margin-left: 10px;
+}
+
+.selected-item-total-price {
+  font-weight: bold;
+  margin-top: 10px;
+}</style>
+<body>
+  <header>
+    <h1>VECTORY Restaurant</h1>
+  </header>
+
+  <main>
+   <h2>Menu</h2>
+    <section id="menu-section">
+     
+      <div class="food-item">
+        <img src="food1.jpg" alt="Food 1">
+        <h3 class="food-name">Food 1</h3>
+        <p class="food-price">50</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="download(1).jpeg" alt="Food 2">
+        <h3 class="food-name">Food 2</h3>
+        <p class="food-price">70</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="DESERET.jpg" alt="Food 3">
+        <h3 class="food-name">Food 3</h3>
+        <p class="food-price">90</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+	  <div class="food-item">
+        <img src="SPAGETTI.jpg" alt="Food 1">
+        <h3 class="food-name">Food 1</h3>
+        <p class="food-price">50</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="DULET.jpeg" alt="Food 2">
+        <h3 class="food-name">Food 2</h3>
+        <p class="food-price">70</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="i1.jpeg" alt="Food 3">
+        <h3 class="food-name">Food 3</h3>
+        <p class="food-price">90</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+   
+      <div class="food-item">
+        <img src="i2.jpeg" alt="Food 1">
+        <h3 class="food-name">Food 1</h3>
+        <p class="food-price">50</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="i3.jpeg" alt="Food 2">
+        <h3 class="food-name">Food 2</h3>
+        <p class="food-price">70</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="i4.jpeg" alt="Food 3">
+        <h3 class="food-name">Food 3</h3>
+        <p class="food-price">90</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+	  <div class="food-item">
+        <img src="i5.jpeg" alt="Food 1">
+        <h3 class="food-name">Food 1</h3>
+        <p class="food-price">50</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="i6.jpeg" alt="Food 2">
+        <h3 class="food-name">Food 2</h3>
+        <p class="food-price">70</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <div class="food-item">
+        <img src="i7.jpeg" alt="Food 3">
+        <h3 class="food-name">Food 3</h3>
+        <p class="food-price">90</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </section>
+	
+
+    <section id="cart-section">
+      <h2>Cart</h2>
+      <div id="selectedItemsContainer"></div>
+      <button onclick="sendOrder()">Place Order</button>
+    </section>
+
+    <form id="order-form" action="order.php" method="post">
+      <input type="text" name="userName" placeholder="Your Name" required>
+      <input type="text" name="userAddress" placeholder="Address" required>
+      <input type="text" name="userPhone" placeholder="Phone Number" required>
+	   <input type="text" name="hotelName" value="vectory" required>
+      <!-- Hidden input fields for selected items and total price -->
+      <input type="hidden" name="selectedItems" value="">
+      <input type="hidden" name="totalPrice" value="">
+    </form>
+  </main>
+
+  <script>
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const selectedItemsContainer = document.getElementById('selectedItemsContainer');
+    const selectedItems = [];
+    let totalPrice = 0;
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const foodItem = button.parentElement;
+        const foodName = foodItem.querySelector('.food-name').textContent;
+        const foodPrice = parseInt(foodItem.querySelector('.food-price').textContent);
+
+        selectedItems.push({ name: foodName, price: foodPrice });
+
+        totalPrice += foodPrice;
+
+        displaySelectedItems();
+
+        console.log('Selected Items:', selectedItems);
+        console.log('Total Price:', totalPrice);
+      });
+    });
+
+    function displaySelectedItems() {
+      selectedItemsContainer.innerHTML = '';
+
+      selectedItems.forEach(item => {
+        const itemContainer = document.createElement('div');
+        itemContainer.classList.add('selected-item');
+
+        const itemName = document.createElement('span');
+        itemName.classList.add('selected-item-name');
+        itemName.textContent = item.name;
+
+        const itemPrice = document.createElement('span');
+        itemPrice.classList.add('selected-item-price');
+        itemPrice.textContent = item.price + ' Birr';
+
+        itemContainer.appendChild(itemName);
+        itemContainer.appendChild(itemPrice);
+
+        selectedItemsContainer.appendChild(itemContainer);
+      });
+
+      const totalPriceElement = document.createElement('span');
+      totalPriceElement.classList.add('selected-item-total-price');
+      totalPriceElement.textContent = 'Total Price: ' + totalPrice + ' Birr';
+
+      selectedItemsContainer.appendChild(totalPriceElement);
+    }
+
+    function sendOrder() {
+      const orderForm = document.querySelector('#order-form');
+      orderForm.elements['selectedItems'].value = JSON.stringify(selectedItems);
+      orderForm.elements['totalPrice'].value = totalPrice;
+
+      orderForm.submit();
+    }
+  </script>
+  
+  <footer>
+    <p>&copy; 2024 Tinsae Restaurant | All rights reserved</p>
+  </footer>
+</body>
+</html>

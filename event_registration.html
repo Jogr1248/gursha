@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea,
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        select {
+            height: 35px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> spacial orders for spacial events</h2>
+        <form id="eventForm" method="POST" action="event_registration.php">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required pattern="[A-Za-z\s]+" title="Only alphabets and spaces are allowed">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" name="phone" id="phone" required pattern="[0-9+]{10,}" title="Phone number must be numeric and at least 10 digits long">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea name="address" id="address" maxlength="30" required pattern="[A-Za-z\s]+"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="event_type">Event Type:</label>
+                <select name="event_type" id="event_type" required>
+                    <option value="">Select Event Type</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Corporate">Corporate</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="attendees">Number of Attendees:</label>
+                <input type="number" name="attendees" id="attendees" required pattern="[0-9+]{10,}" title="Phone number must be numeric and at least 10 digits long">
+            </div>
+            <div class="form-group">
+                <label for="duration">Event Duration (in hours):</label>
+                <input type="number" name="duration" id="duration" required pattern="[0-9+]{10,}" title="Phone number must be numeric and at least 10 digits long">
+            </div>
+            <div class="form-group">
+                <label for="service_type">Service Type:</label>
+                <select name="service_type" id="service_type" required>
+                    <option value="">Select Service Type</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="break_fast">Breakfast</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="cocktail">Cocktail</option>
+                    <option value="buffet">Buffet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            background-color: #337ab7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button-container button:hover {
+            background-color: #23527c;
+        }
+
+        #footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+            bottom: auto;
+            left: 0;
+            right: 0;
+            top:400px;
+        }
+
+        .footer {
+            flex-basis: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer h4 {
+            margin-top: 0;
+        }
+
+        .footer pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .footer button {
+            background-color: #337ab7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .footer button:hover {
+            background-color: #23527c;
+        }
+
+        .footer .fa {
+            margin-right: 10px;
+            color: #fff;
+        }
+
+        .footer .fa:hover {
+            opacity: 0.7;
+        }
+    </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to our Drink Selection</h1>
+    </header>
+    <header>
+        <h2>Choose a Drink Category</h2>
+    </header>
+  
+    <div class="button-container">
+        <button onclick="window.location.href='Alcholic.php'">Alcoholic Drinks</button>
+        <button onclick="window.location.href='soft.php'">Soft Drinks</button>
+        <button onclick="window.location.href='other.html'">Fancy Drinks</button>
+    </div>
+
+    
+
+    <div id="footer"> 
+        <div class="footer">
+            <h4>About Us</h4>
+            <pre>
+Want to know more about us or
+have a question? Read our FAQ's
+(Frequently Asked Questions) or contact us!
+            </pre>
+        </div>
+        <div class="footer">
+            <h4>Learn More</h4>
+            <pre>
+If you own a business and would 
+like to reach more customers, 
+learn more about how to work with us.
+            </pre>
+            <div class="inline-buttons">
+                <button onclick="window.location.href='learn.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="footer">
+            <h4>Contact Us</h4>
+            <pre>
+Get In Touch With Us
++251-999-999-999
+help@deliveraddis.com
+Connect with us on social media
+            </pre>
+            <div style="display: inline-flex; margin: 4px 20px; padding: 0px 20px;">
+                <a href="f/@gursha" class="fa fa-facebook"></a>
+                <a href="t/@gursha" class="fa fa-twitter"></a>
+            </div>
+        </div>
+    </div>
+
+    
+  
+</body>
+</html>

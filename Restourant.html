@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Page</title>
+    <style>
+        .restaurant-dropdown {
+            width: 200px;
+        }
+
+        .restaurant-dropdown select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="restaurant-dropdown">
+        <select onchange="redirectToRestaurant(this)">
+            <option value="">Select a restaurant</option>
+            <option value="vectorys.html" data-value="victory-hotel" data-location="New York" data-rating="4">VICTORY HOTEL</option>
+            <option value="SHEMBELALAMENU.html" data-value="shembelala" data-location="Paris" data-rating="5">SHEMBELALA</option>
+            <option value="LEMU_MENU.html" data-value="lemu-hotel" data-location="Tokyo" data-rating="3">LEMU HOTEL</option>
+            <option value="ADILA.html" data-value="shembelala" data-location="Paris" data-rating="5">ADILA</option>
+            <option value="ASHAM.html" data-value="lemu-hotel" data-location="Tokyo" data-rating="3">ASHAM HOTEL</option>
+            <option value="added_hotel.php" data-value="added hotel name" data-location="added location">added hotelname</option>
+        </select>
+    </div>
+
+    <script>
+        function redirectToRestaurant(selectElement) {
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            var url = selectedOption.value;
+            var dataValue = selectedOption.getAttribute('data-value');
+            var dataLocation = selectedOption.getAttribute('data-location');
+            var dataRating = selectedOption.getAttribute('data-rating');
+
+            if (url) {
+                // Redirect to the selected restaurant's page
+                window.location.href = url;
+            } else {
+                // Display the selected restaurant's data
+                console.log('Restaurant: ' + dataValue);
+                console.log('Location: ' + dataLocation);
+                console.log('Rating: ' + dataRating);
+            }
+        }
+    </script>
+</body>
+</html>
